@@ -76,6 +76,11 @@ public extension Data {
 			try self.pack(string: value_str)
 		}
 		
+		// BOOLEAN VALUES
+		else if let value_bool = obj as? Bool {
+			try self.pack(boolean: value_bool)
+		}
+		
 		// UNSIGNED INT
 		else if let value_u8 = obj as? UInt8 { // 8 BIT
 			//try self.pack(signedInt: Int(value_u8))
@@ -133,11 +138,6 @@ public extension Data {
 		else if let value_char = obj as? Character {
 			try self.pack(string: String(value_char))
 		}
-		// BOOLEAN VALUES
-		else if let value_bool = obj as? Bool {
-			try self.pack(boolean: value_bool)
-		}
-		
 		// ARRAY
 		else if let value_array = obj as? [Any?] {
 			try self.pack(array: value_array)
